@@ -1,24 +1,17 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-<body>
-    <a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
+---
+import BaseLayout from '../layouts/baselayouts.astro';
+import BlogPost from '../components/blogroll.astro';
+const pageTitle = "About Me";
+const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
+---
 
 
-
-  <h1>My Astro Site</h1>
-  <h1>Blog</h1>
+<BaseLayout pageTitle={pageTitle}>
   <h2>blgoogmgo</h2>
 
   <p>I am working again through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
 
   <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
-</body>
-</html>
+
+  {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+</BaseLayout>
