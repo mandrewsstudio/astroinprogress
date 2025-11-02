@@ -12,5 +12,5 @@ export async function GET(context) {
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://astroinprogress.netlify.app/"
+  site: "https://astroinprogress.netlify.app"
 });
